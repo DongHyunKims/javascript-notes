@@ -1,18 +1,19 @@
-#Scope(유효범위)
+##Scope(유효범위)
 
-## 설명
+### 설명
 - 프로그래밍 언어에서 scope은 변수와 매개변수의 생존 기간을 제어.
 - scope는 이름이 충돌하는 문제를 줄여주고, 자동으로 메모리를 관리 하기 때문에 프로그래머에게 중요한 개념.
 - 본래 자바스크립트는 block scope(scope 종류 참조) 이 없다. 자바스크립트에서는 function scope이 존재.
 - 자바스트립트에서는 함수에서 사용하는 모든 변수를 함수 첫 부분에서 선언 하는 것이 최선의 방법.
 - 유효범위 개념을 잘 알고 있다면 변수와 매개변수의 접근성과 생존기간을 제어할 수 있다.
 
-## scope 의 종류
+### scope 의 종류
 #### 1. Global Scope
 - 함수 밖에서 정의 된 scope.
 - 웹페이지의 모든 script와 function 에서 접근 할수 있는 영역
 
 **그림1**
+
 <img src="http://www.datchley.name/content/images/2015/08/js-es5-scope-2.png" />
 
 **예제1**
@@ -47,7 +48,7 @@ carName = "NiceCar"
 위 예제에서 function scope 안에서 선언된 `var carName`는 선언된 함수 내에서만 사용이 가능하다. 그렇게 함수 외부에서 `carName`에 접근 할 시 function 내부에 있는 `carName`를 접근 하는 것이 아닌 `window.carName`의 property에 "NiceCar"를 할당 한다. 
 
 
-## javascript 유효범위의 특징
+### javascript 유효범위의 특징
 javascript의 유효 범위는 다른 프로그래밍 언어와 다른 개념을 갖는다.
 
 #### 1. 함수 단위의 유효범위
@@ -136,13 +137,14 @@ a is not defined
 위 예제에서 전역 변수에 선언된 test1, test2는 어디에서든지 사용 할수 있다. 하지만 test1실행시에 a가 정의 되있다고 하더라고 선언시 에는  Global 또는 function 에서 a가 정의 되어있지 않기 때문에 a에 접근 할수 없다.
 
 
-## scope chain
+### scope chain
 - Scope들이 chain 처럼 연결되어있다.
 - 식별자(identifiers)를 찾는 일련의 과정
 - scope chain은 function이 정의된 장소에서부터 시작. 어디서 호출 되었는지 와는 전혀 상관 없다.
 
 **그림2**
-  <img src="http://figures.oreilly.com/tagoreillycom20090601oreillybooks300541I_book_d1e1/figs/I_mediaobject7_d1e7080-web.png" />
+
+<img src="http://figures.oreilly.com/tagoreillycom20090601oreillybooks300541I_book_d1e1/figs/I_mediaobject7_d1e7080-web.png" />
 
 
 **예제7**
@@ -173,11 +175,10 @@ The number is: 5
 
 
 
-## Tip
-- block scope 
-- `{}`으로 표현 하며 block 밖에서 block 안 쪽에 있는 변수를 접근 할수 없다. 안쪽에서 밖으로의 접근은 가능하다.
+### Tip
+- block scope : `{}`으로 표현 하며 block 밖에서 block 안 쪽에 있는 변수를 접근 할수 없다. 안쪽에서 밖으로의 접근은 가능하다.
 
-## 참고
+### 참고
 - https://www.w3schools.com/js/js_scope.asp
 - http://www.nextree.co.kr/p7363/
 - 자바스크립트 핵심 가이드(더글라스 크락포드 저)

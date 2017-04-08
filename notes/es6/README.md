@@ -1,6 +1,6 @@
-## 170405
+## ECMA SCRIPT 6
 
-#### ES6
+#### ES6 란?
 - 브라우저 지원 이슈로 인해 우리나리의 많은 회사에서 사용하지는 못하는 기술 
 - 외국에서는 많이 사용한다.
 - 자바스크립트 표준이다.
@@ -95,7 +95,7 @@ for ( let value in arr) {
 }
 ~~~
 - 결과
-> <img src="../images/forin.png">
+> <img src="../../images/forin.png">
 
 
 
@@ -424,7 +424,7 @@ obj.run(); //obj
 ~~~
 
 예제2 결과
-> <img src="../images/arrowfn.png">
+> <img src="../../images/arrowfn.png">
 
 #### function enhancements - default parameters
 - parameter로 바로 기본값을 할당 할수 있다.
