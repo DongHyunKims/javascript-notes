@@ -1,4 +1,4 @@
-1. 이벤트 델리게이션의 실제원리와 장점을 설명 하시오
+### 1. 이벤트 델리게이션의 실제원리와 장점을 설명 하시오
 - Event delegation을 사용 하면 부모 element에 적용한 이벤트는 자식 element에도 모두 적용 된다. 
 - Event propagation : Event delegation을 이해하기 위한 중요한 요인 중 하나이다. Event propagation 은 자식 element에서 이벤트가 발생하면 연쇄적으로 부모와 조상 element에도 이벤트가 발생 한다. 즉, a 태그를 하나 클릭 하게 되면 전체 document body에 효과적인 clicking을 할수 있도록 한다. 
     - `<a>`
@@ -38,9 +38,9 @@ if(e.target && e.target.nodeName == "LI") {
 
 - 장점 : 필요한 element 전체에 이벤트를 적용 하지 않고 상위의 element에 이벤트를 등록 시키면 하위의 자식 element에서 사용 할수 있는 장점이 있다.
 
-2. 프로토타입 메소드와 인스턴스 메소드의 차이점은
+### 2. 프로토타입 메소드와 인스턴스 메소드의 차이점은
 
-3. 비동기 콜백 함수가 call stack 사이에서 어떻게 실행 되는가?
+### 3. 비동기 콜백 함수가 call stack 사이에서 어떻게 실행 되는가?
 
 - heap은 메모리를 할당하고 스택에 있는 함수를 부른다.
   - web api : Ajax, setTimeOut, event 등을 의미한다. 브라우저에서 지원한다.
@@ -65,6 +65,6 @@ if(e.target && e.target.nodeName == "LI") {
 > 9. callback 내부의 `console.log("There");`도 callstack에 push 되고 return 시 pop 된다.
 > 10. 마지막으로 callback 함수인 cb 함수가 pop 된다.
 
-4. 비동기 함수에서 this 키워드가 어떻게 변경되는지 예를 들어보고 이를 해결하는 방법을 설명하세요.
+### 4. 비동기 함수에서 this 키워드가 어떻게 변경되는지 예를 들어보고 이를 해결하는 방법을 설명하세요.
 
 
