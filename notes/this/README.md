@@ -153,6 +153,14 @@ true
 위 예제에서 함수를 이벤트 핸들러용 익명 함수 안에서 this를 사용하면 현재 이벤트가 발생 하고 있는 element 객체를 바인딩 한다.
 
 
+
+### Default Binding
+
+this는 global을 바라보고 있다. 하지만, strict mode를 적용하면 this는 undefined가 된다.
+
+
+
+
 ### 참고
 - https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Operators/this
 - http://resoneit.blogspot.kr/2014/01/this.html
