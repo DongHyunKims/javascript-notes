@@ -41,14 +41,18 @@ if(e.target && e.target.nodeName == "LI") {
 ### 2. 프로토타입 메소드와 인스턴스 메소드의 차이점은?
 모든 객체는 속성을 상속하는 프로토 타입과 연결되어있다. 생성자 함수의 프로토 타입 속성을 통해 공통의 메소드와 속성을 공유하고 상속한다. 인스턴스 메소드는 인스턴스가 생성 될때마다 메모리를 차지하지만 프로토 타입 메소드는 한번만 차지하고 해당 메소드를 모든 인스턴스와 객체가 공유 하기 때문에 메모리에 효율적이며 재사용성 높였다.
 
+그림 
+
+<img src="http://poiemaweb.com/img/object_literal_prototype_chaining.png" />
+
 예제
-~~~
+~~~javascript
 let myArr = new Array("foo","bar");
 console.log(myArr.join());
 ~~~
 위 예제에서 Array의 `join()` 메소드는 myArr 인스턴스에 정의 되지 않은 메소드이다. `join()` 메소드는 프로토 타입에 정의가 되어있기 때문에 Array객체의 모든 인스턴스는 해당 메소드를 사용할수 있다. 모든 배열 인스턴스마다 함수를 새로 만드는 것보다 하나의 join() 함수를 모든 배열에서 가져다 사용 하는 것이 효율적이기 때문이다.
 
-<img src="http://poiemaweb.com/img/object_literal_prototype_chaining.png" />
+
 
 ### 3. 비동기 콜백 함수가 call stack 사이에서 어떻게 실행 되는가?
 
@@ -56,7 +60,8 @@ console.log(myArr.join());
   - web api : Ajax, setTimeOut, event 등을 의미한다. 브라우저에서 지원한다.
   - callback Queue : onClick, Scroll 등 이벤트 함수와 비동기 콜백 함수를 이 queue에 넣는다.
   - Event Loop : 스택과 큐를 보고 있다가 스택이 비어있으면 callback Queue로 부터 스택에 넣는다.
-    그림
+
+그림
 
 <img src="http://prashantb.me/content/images/2017/01/js_runtime.png" />
 
@@ -80,7 +85,7 @@ console.log(myArr.join());
 비동기 함수의 this는 window / global 또는 strict mode에서는 undefined를 바라보고 있다. (이벤트 함수 콜백의 메소드는 해당 이벤트를 부른 element이다.)
 
 예제
-~~~
+~~~javascript
 let Car = function(name){
 	this.name = name;
 	function getName(){
