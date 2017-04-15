@@ -14,7 +14,7 @@
 - inner 함수를 형성 하는 클로저 : outter 함수는 inner 함수의 인수와 변수를 사용 할수 없는 반면에 inner 함수는 outter 함수의 arguments와 변수를 접근할 수 있다.
 
 예제 1
-~~~
+~~~javascript
 function addSquares(a,b) {
   function square(x) {
     return x * x;
@@ -34,7 +34,7 @@ c = addSquares(4,5); // returns 41
 
 
 예제 2
-~~~
+~~~javascript
 function outside(x) {
   function inside(y) {
     return x + y;
@@ -49,7 +49,7 @@ result1 = outside(3)(5); // returns 8
 위의 예제에서 `inside`함수는 `outside`함수의 인자인 x를 참조 하고 있다. `outside` 함수가 `inside`함수를 반환 하면서 `outside`함수의 생명 주기는 끝났지만 `inside`함수에서는 x에 대한 참조를 계속 사용 한다. 그리고 x의 값을 외부에서 더이상 접근 하지 못하는 private 상태를 만들었다.
 
 예제 3
-~~~
+~~~javascript
 let out = function(){
 let value = 0;
   return function () {
