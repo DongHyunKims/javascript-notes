@@ -4,8 +4,8 @@
 **scope의 종류**
 
 - Global scope
- - 함수 밖에서 사용하는 scope
- - 웹페이지의 모든 script와 function 에서 접근 할수 있는 scope 
+	- 함수 밖에서 사용하는 scope
+	- 웹페이지의 모든 script와 function 에서 접근 할수 있는 scope 
 
 ~~~javascript
 var carName = "Volvo";
