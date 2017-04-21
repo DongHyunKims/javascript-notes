@@ -1,6 +1,44 @@
 ## javascript checklist 1~4
 
 ### 1. 자바스크립트 scope를 var키워드르를 기준으로 설명할수 있다.
+**scope의 종류**
+
+- Global scope
+ - 함수 밖에서 사용하는 scope
+ - 웹페이지의 모든 script와 function 에서 접근 할수 있는 scope 
+
+~~~javascript
+var carName = "Volvo";
+//Volvo
+// code here can use carName
+function myFunction() {    
+  carName = "MyCar"    //MyCar
+} 
+carName = "NiceCar"//NiceCar
+~~~
+위 예제에서 Global Scope 선언된 `var carName`는 어디서든 접근이 가능하다. 그렇기 때문에
+`myFunction` 함수안에서도 `carName` 변수를 접근할수 있으며 밖에서도 접근이 가능하다.
+
+- Function scope
+  - function 내부에서 정의 된 변수는 function 외부에서 접근이 불가능하다. 
+  - `{}`와 같은 `block scope`은 무시한다.
+~~~javascript
+// code here can not use carName
+function myFunction() {
+    var carName = "Volvo";
+    // code here can use carName
+}
+carName = "NiceCar"
+~~~
+위 예제에서 function scope 안에서 선언된 `var carName`는 선언된 함수 내에서만 사용이 가능하다. 그렇게 함수 외부에서 carName에 접근 할 시 function 내부에 있는 `carName`를 접근 하는 것이 아닌 `window.carName`의 property에 "NiceCar"를 할당 한다. 
+
+
+
+<img src="http://www.datchley.name/content/images/2015/08/js-es5-scope-2.png" />
+
+
+
+
 ### 2. closure 는 언제 형성되는지? 경험한 코드가 있으면 코드로 보여주기.
 **클로저는 언제 형성되는가?**
 클로저는 외부 함수에서 선언 한 지역변수를 외부함수의 실행 이후에 내부 함수의 영역에서 사용할 때 생기는 scope 이다.
