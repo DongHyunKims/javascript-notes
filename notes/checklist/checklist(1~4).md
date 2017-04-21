@@ -2,6 +2,59 @@
 
 ### 1. 자바스크립트 scope를 var키워드르를 기준으로 설명할수 있다.
 ### 2. closure 는 언제 형성되는지? 경험한 코드가 있으면 코드로 보여주기.
+**클로저는 언제 형성되는가?**
+클로저는 외부 함수에서 선언 한 지역변수를 외부함수의 실행 이후에 내부 함수의 영역에서 사용할 때 생기는 scope 이다.
+~~~javascript
+function makeFunc() {
+  var name = "Mozilla";
+  function displayName() {
+    alert(name);
+  }
+  return displayName;
+}
+
+var myFunc = makeFunc();
+myFunc();
+~~~
+위의 예제에서 `makeFunc()`을 실행시키면 이미 `makeFunc()`안의 `name`변수는 lifecycle이 끝났다. 하지만 `makeFunc()`의 내부 함수인 `displayName`을 `myFunc` 변수에 저장 하고 실행 시키면 이미 lifecycle이 끝난 name을 참조한다. 이때 클로저라는 scope 또는 공간이 형성 된다.
+
+**경험한 코드**
+
+**html**
+~~~html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+  <button>good</button>
+  <script src="./test.js"></script>
+  </body>
+</html>
+~~~
+
+**javascript**
+~~~javascript
+(function(){
+	var data = {name : "동현"};
+	document.querySelector("button").addEventListener("click",function(){
+      	data.name = "상우";
+      	alert(data.name);
+	});
+}())
+~~~
+위 예제와 같이 즉시 실행 함수를 실행 시키면 해당 함수 내부의 `data`변수의 lifecycle은 종료 된다. 그후 `button` element의 콜백 함수에서 `data`의 참조를 통해 `data`변수를 사용 할때 클로저 공간이 생성 된다.
+
+**결과**
+<img src="./images/closeure_ex01.png" />
+
+
+
+
+
+
 ### 3. const는 언제 사용해야 하는지?
 **특징**
 
