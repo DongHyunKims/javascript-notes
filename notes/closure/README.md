@@ -167,7 +167,7 @@ setupHelp();
 예제5의 실수를 해결하기 위해 위의 방법을 사용한다.  `makeHelpCallback`함수를 이용하여 각각의 이벤트 마다 새로운 클로저 환경을 만들어 주면 해결이 가능하다. loop를 돌면서`makeHelpCallback`함수를 실행시키면 makeHelpCallback에 의해 익명 함수 return 된다. 해당 익명 함수는 이벤트가 발생 할때 마다 실행 된다. 이때 익명 함수가 참조 하고 있는 `help` 변수는 outter 함수인 `makeHelpCallback`의 arguments인 help를 참조하고 있으므로 정상적인 결과를 제공한다. 3개의 이벤트 모두 다른 클로저 환경을 참조하는 것이다.
 
 **해결방법2**
-~~~
+~~~javascript
 function showHelp(help) {
   document.getElementById('help').innerHTML = help;
 }
