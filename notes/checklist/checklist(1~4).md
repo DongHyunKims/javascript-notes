@@ -3,9 +3,9 @@
 ### 1. 자바스크립트 scope를 var키워드르를 기준으로 설명할수 있다.
 **scope의 종류**
 
-- Global scope
- - 함수 밖에서 사용하는 scope
- - 웹페이지의 모든 script와 function 에서 접근 할수 있는 scope 
+- Global scope		
+  - 함수 밖에서 사용하는 scope
+  - 웹페이지의 모든 script와 function 에서 접근 할수 있는 scope 
 
 ~~~javascript
 var carName = "Volvo";
@@ -41,7 +41,9 @@ carName = "NiceCar"
 
 ### 2. closure 는 언제 형성되는지? 경험한 코드가 있으면 코드로 보여주기.
 **클로저는 언제 형성되는가?**
+
 클로저는 외부 함수에서 선언 한 지역변수를 외부함수의 실행 이후에 내부 함수의 영역에서 사용할 때 생기는 scope 이다.
+
 ~~~javascript
 function makeFunc() {
   var name = "Mozilla";
