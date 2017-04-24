@@ -183,3 +183,16 @@ The number is: 5
 - https://www.w3schools.com/js/js_scope.asp
 - http://www.nextree.co.kr/p7363/
 - 자바스크립트 핵심 가이드(더글라스 크락포드 저)
+
+### 필기
+- nest scope : 감싸는 scope
+- lex : parse 하는 것을 의미한다.
+- function Declaration , Expression 차이 검색
+
+~~~
+[지역 변수]
+· 함수 혹은 { … } 범위 내부에서 선언
+· 함수가 호출되면 메모리에 생성 및 할당이 되며, 함수가 끝나면 메모리 반환
+· 범위 안에서만 접근이 가능하다. 범위 밖에서 접근하려면 Call-by-Reference인 포인터가 필요함
+· 함수가 호출될 때마다 새롭게 초기화돼서 선언되므로 이전 호출에서 어떠한 변화를 해도 다음 호출에서는 영향을 받지 않음(영향을 받게 하는 방법도 있으나 기본적으로는 이렇다)
+~~~
