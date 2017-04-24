@@ -1,4 +1,4 @@
-## javascript checklist 1~4
+## javascript checklist01
 
 ### 1. 자바스크립트 scope를 var키워드르를 기준으로 설명할수 있다.
 **scope의 종류**
