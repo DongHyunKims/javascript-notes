@@ -78,10 +78,10 @@ function getUserInput(firstName, lastName, callback, callbackObj) {
 <img src="http://cfile7.uf.tistory.com/image/2362E03357889CBE1D60BC" />
 
 **promise 상태**
-대기중(pending): 초기 상태, 이행 또는 거부되지 않은 상태.
-이행됨(fulfilled): 연산이 성공리에 완료되었음을 뜻한다.
-거부됨(rejected): 연산이 실패했음을 뜻한다.
-settled: 연산이 성공했던 안했던 결론이 난 상태이다.
+- 대기중(pending): 초기 상태, 이행 또는 거부되지 않은 상태.
+- 성공됨(fulfilled): 연산이 성공리에 완료되었음을 뜻한다.
+- 거부됨(rejected): 연산이 실패했음을 뜻한다.
+- settled: 연산이 성공했던 안했던 결론이 난 상태이다.
 
 promise 예제
 ~~~javascript
@@ -190,6 +190,26 @@ Promise.all([promise1, promise2]).then(function (values) {
    <img src="../../images/promiseAPI3.png" />
 
 
+#### 필기
+**우식**
+- 현재 실행 되는것과 나중에 실행되는 것을 구분.
+- 자바스크립트 싱글 스레드 언어.
+- ajax, setTimeOut, setInterver, eventListener...
+- setTimeout 는 3초후에 실행된다? 그게 아니라 최소 3초가 걸린다는 말이다.
+- callback의 가장큰 문제점 : 자기가 자기코드를 관리할수 있는 권한을 뺏긴다.
+- promise를 사용하는 이유는 자신의 코드를 관리할수 있도록 하는 이유가 가장 크다.
+
+**홍**
+- reject / resolve는 부르고 싶을때 부르면 된다. 원할때 부르면 된다.
+- Promise.resolve 메소드를 바로 사용 할수 있다.
+- promise.all은 ajax사용시 많이 사용 된다. 넣은 프로미스 인스턴스가 모두  then callback 성공해야 실행된다.
+- race는 둘중 하나라도 되면 then callback 함수 실행.
+- then 함수는 chaining 된다.
+
+**동현**
+
+#### 궁금한점.
+- 완전 믿는 상태와 조건없이 resolve를 사용하는 것은 같지 않는가?
 
 
 #### 출처
