@@ -149,7 +149,7 @@ _promise(true)
 - 여러개의 비동기 작업들이 있다면 모두 완료 된후 다른 작업을 실행 하고 싶다면 `all` 함수를 사용하면 된다.
 
 all 예제
-~~~
+~~~javascript
 var promise1 = new Promise(function (resolve, reject) {
 
 	// 비동기를 표현하기 위해 setTimeout 함수를 사용 
@@ -182,13 +182,12 @@ Promise.all([promise1, promise2]).then(function (values) {
 `promise1`, `promise2` 인스턴스를 배열로 만들어 여러 비동기 작업을 실행후 then 함수를 통해 다음 작업을 실행한다.
 
 4. promise ajax 예제
-   [내용작성필요]
+- [내용작성필요]
 
 5. promise API
-
-<img src="../../images/promiseAPI1.png" />
-<img src="../../images/promiseAPI2.png" />
-<img src="../../images/promiseAPI3.png" />
+   <img src="../../images/promiseAPI1.png" />
+   <img src="../../images/promiseAPI2.png" />
+   <img src="../../images/promiseAPI3.png" />
 
 
 
