@@ -184,7 +184,10 @@ Promise.all([promise1, promise2]).then(function (values) {
 4. promise ajax 예제
 - [내용작성필요]
 
-5. promise API
+5. promise chaining
+- [내용작성필요]
+
+6. promise API
    <img src="../../images/promiseAPI1.png" />
    <img src="../../images/promiseAPI2.png" />
    <img src="../../images/promiseAPI3.png" />
@@ -217,4 +220,5 @@ Promise.all([promise1, promise2]).then(function (values) {
 - https://hyunseob.github.io/2015/08/09/async-javascript/
 - https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Promise
 - https://developers.google.com/web/fundamentals/getting-started/primers/promises
+- http://solutionoptimist.com/2013/12/27/javascript-promise-chains-2/
 
