@@ -2,6 +2,30 @@
 
 ### 6. 비동기 콜백함수와 스택간의 관계를 어떻게 설명할 수 있는지?
 
+- heap은 메모리를 할당하고 스택에 있는 함수를 부른다.
+  - web api : Ajax, setTimeOut, event 등을 의미한다. 브라우저에서 지원한다.
+  - callback Queue : onClick, Scroll 등 이벤트 함수와 비동기 콜백 함수를 이 queue에 넣는다.
+  - Event Loop : 스택과 큐를 보고 있다가 스택이 비어있으면 callback Queue로 부터 스택에 넣는다.
+
+그림
+
+<img src="http://prashantb.me/content/images/2017/01/js_runtime.png" />
+
+예제
+
+<img src="http://cek.io/images/event-loop/loupe.gif" />
+
+> 1. `console.log("hi")`가 callstack에 push 된다.
+> 2. `console.log("hi")`는 return 되면서 stack의 맨 위에서 pop 된다.
+> 3. `setTimeOut` 함수가 callstack에 push 된다.
+> 4. `setTimeOut` 함수는 web api의 부분으로  web api에서 관리 하며 2초동안 처리한다.
+> 5. 계속 해서 `console.log("Everybody")` 함수를 callstack에 push 한다.
+> 6. `console.log("Everybody")`가 리턴 되고 stack에서 pop 된다.
+> 7. 2초가 지난 후 콜백 함수인 cb는 callback queue로 이동 하게 된다.
+> 8. event loop는 call stack이 비어있는지 확인하고 만약 비어있지 않다면 기다린다. callstack이 비어 있어야 callback queue에서 callstack에 push 된다.
+> 9. callback 내부의 `console.log("There");`도 callstack에 push 되고 return 시 pop 된다.
+> 10. 마지막으로 callback 함수인 cb 함수가 pop 된다.
+
 ### 23. this 에 대해서 설명하기. 
 **설명**
 
@@ -69,3 +93,97 @@ greet.call(i);
 
 
 ### 38. preventDefault는 언제 쓸 수 있는 것인지?
+- preventDefault
+  preventDefault는 현재 이벤트의 기본 동작을 중지 하기위해 사용한다. `a` 태그를 예를 들어 들어 보자.
+
+**html**
+~~~html
+<div id="div_">
+    DIV영역
+    <p id="p_">
+        P영역
+        <a id="a_" href="http://www.google.co.kr" target="_blank">A영역 구글 링크</a>
+    </p>
+</div>
+
+<section id="console"><br></section>
+~~~
+
+**javascript**
+
+~~~Javascript
+//DIV 영역에 클릭 이벤트 설정
+$("#div_").on("click",function(event){
+    $("#console").append("<br>DIV 클릭");
+});
+
+//P 영역에 클릭 이벤트 설정
+$("#p_").on("click",function(event){
+    $("#console").append("<br>P 클릭");
+});
+
+//A 영역에 클릭 이벤트 설정
+$("#a_").on("click",function(event){
+    $("#console").append("<br>A 클릭");
+    
+    //이벤트의 기본 동작을 중단한다.
+    event.preventDefault();
+});
+~~~
+`event.preventDefault();`함수는  `a` 태그의 기본 기능인 `링크 기능`을 사용하지 않고 명시한 이벤트를 적용시킬때 사용 된다.
+
+- stopPropagation
+
+stopPropagation 함수는 이벤트가 상위 element로 전파되는 것을 막기위한 함수이다.
+
+**html**
+~~~Html
+<div id="div_">
+    DIV영역
+    <p id="p_">
+        P영역
+        <span id="span_">SPAN영역</span>
+    </p>
+</div>
+
+<section id="console"><br></section>
+~~~
+
+**javascript**
+~~~javascript
+//DIV 영역에 클릭 이벤트 설정
+$("#div_").on("click",function(event){
+    $("#console").append("<br>DIV 클릭");
+});
+
+//P 영역에 클릭 이벤트 설정
+$("#p_").on("click",function(event){
+    $("#console").append("<br>P 클릭");
+});
+
+//SPAN 영역에 클릭 이벤트 설정
+$("#span_").on("click",function(event){
+    $("#console").append("<br>SPAN 클릭");
+    
+    //상위로 이벤트가 전파되지 않도록 중단한다.
+    event.stopPropagation();
+});
+~~~
+위의 예제에서 처럼 `span` 영역에 이벤트를 적용 시키면 `p`, `div`영역에 이벤트가 전파 되지 않는다.
+
+만약 element의 기본 기능도 없애고 상위 element로 이벤트의 전파를 막고 싶다면, `stopPropagation`, `preventDefault` 함수를 같이 사용 하면 된다.
+
+만약 `stopPropagation`, `preventDefault` 함수를 둘다 사용한 효과를 얻고 싶다면 `   return false;`를 사용하면 된다.
+
+~~~Javascript
+//A 영역에 클릭 이벤트 설정
+$("#a_").on("click",function(event){
+    $("#console").append("<br>A 클릭");
+    
+    //jQuery 이벤트의 경우,
+    //return false는 event.stopPropagation()과 event.preventDefault() 를
+    //모두 수행한 것과 같은 결과를 보인다.
+    return false;
+});
+~~~
+
