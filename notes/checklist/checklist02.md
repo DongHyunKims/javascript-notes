@@ -26,7 +26,10 @@
 > 9. callback 내부의 `console.log("There");`도 callstack에 push 되고 return 시 pop 된다.
 > 10. 마지막으로 callback 함수인 cb 함수가 pop 된다.
 
+
+
 ### 23. this 에 대해서 설명하기. 
+
 **설명**
 
 -  `this`는 두가지 조건에 의해 값이 결정 된다.
@@ -87,14 +90,21 @@ greet.call(i);
 ~~~
 위 예제에서 greet 함수를 호출하 였을때 this는 i 객체. call 메소드를 통해 context를 "i" 객체로 정해 주었기 때문에 호출 시 해당 context가 정해지는 this는 i로 바뀌게 되고 console.log로 제공 되는 결과는 "Douglas Crockford Is An Awesome Javascript Developer" 이다
 
+
+
 ### 24. this를 변경시킬 수 있는 방법을 코드로 예시로 보여주기. 
+
 - apply, call, bind 예제
   https://github.com/DongHyunKims/javascript-notes/tree/master/notes/bind%2Ccall%2Capply
 
 
+
+
 ### 38. preventDefault는 언제 쓸 수 있는 것인지?
-- preventDefault
-  preventDefault는 현재 이벤트의 기본 동작을 중지 하기위해 사용한다. `a` 태그를 예를 들어 들어 보자.
+
+**preventDefault**
+
+preventDefault는 현재 이벤트의 기본 동작을 중지 하기위해 사용한다. `a` 태그를 예를 들어 들어 보자.
 
 **html**
 ~~~html
@@ -132,7 +142,9 @@ $("#a_").on("click",function(event){
 ~~~
 `event.preventDefault();`함수는  `a` 태그의 기본 기능인 `링크 기능`을 사용하지 않고 명시한 이벤트를 적용시킬때 사용 된다.
 
-- stopPropagation
+**stopPropagation**
+
+
 
 stopPropagation 함수는 이벤트가 상위 element로 전파되는 것을 막기위한 함수이다.
 
