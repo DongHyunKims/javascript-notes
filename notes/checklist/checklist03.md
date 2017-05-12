@@ -1,6 +1,55 @@
 ## javascript checklist03
 
 #### 7.  DOM 조작과정에서 성능에 좋지 않은 방식과 좋은 사례는 어떤 것들이 있는지?
+- 리플로우 : 생성된 DOM node의 레이아웃(너비, 높이 등) 변경시, 영향 받는 모든 노드(자식, 부모 등) 모든 수치를 다시 계산하여 트리를 재생성 하는 방법.
+~~~javascript
+function reflow(){
+  document.getElementById("test").style.width = "100px";
+  return false;
+}
+~~~
+
+- 리페인팅 - 리플로우과정이 끝난 후 재 생성된 렌더트리를 다시 그리는 작업. 수치와 상관없는 background-color, visibility, outline등의 스타일 변경시에는 reflow 작업이 생략된 repaint 작업이 일어난다.
+~~~javascript
+function repaint(){
+	document.getElementById("test").style.backgroundColor = "red";
+	return false;
+}
+~~~
+
+리플로우와 리페인팅이 자주 일어날수록 부하가 높아진다.
+
+##### 좋지 않은 예
+
+~~~javascript
+var console = document.getElementById("console");
+var lis = document.getElementsByTagName("li");
+var len = lis.length;
+for(var i = 0; i < len; i++) {
+    console.innerHTML += li[i].innerHTML + "<br />";
+}
+~~~
+
+##### 좋은 예
+~~~javascript
+var console = document.getElementById("console");
+var lis = document.getElementsByTagName("li");
+var len = lis.length;
+var cache = [];
+for(var i = 0; i < len; i++) 
+    // 일반적으로 이러한 문자열 결합은 +로 더해가는 것보다,
+    // 배열을 사용하여 전부 요소로 등록하고 join을 쓰는 것이 빠르다.
+    cache.push(li[i].innerHTML);
+}
+console.innerHTML = cache.join("<br />");
+~~~
+
+
+**참조**
+- https://github.com/nhnent/fe.javascript/wiki/Reflow%EC%99%80-Repaint
+- http://webclub.tistory.com/346
+- https://lists.w3.org/Archives/Public/public-html-ig-ko/2011Sep/att-0031/Reflow_____________________________Tip.pdf
+
 #### 9.  prototype 이 가진 장점은 무엇인가? 
 
 **설명**
@@ -105,6 +154,36 @@ Tip
 
 
 #### 55.  http header는 무엇인가요?
+
+1. HTTP request header
+
+웹브라우저가 HTTP프로토콜을 이용해 요청 정보를 웹 서버로 전송할 때 HTTP 요청 헤더에 부가적인 정보(user-agent, host 등)를 담아 전송한다. 
+
+- accept : 클라이언트가 처리하는 미디어 타입 명시 (예 : */*)
+- accept-language : 클라이언트가 지원하는 언어 지정 (예 : ko)
+- accept-encoding : 클라이언트가 해석할 수 있는 인코딩 방식 지정(예 : gzip, deflate)
+- user-agent : 클라이언트 프로그램(브라우저) 정보 (예 : Mozilla/4.0 (compatible; - MSIE 6.0; Windows NT 5.1))
+- host : 호스트 이름과 URI의 port번호 지정 (www.test.com:8080)
+- connection : 클라이언트와 서버의 연결 방식 설정(Keep-Alive : 클라이언트와 접속 유지,close : 클라이언트와 접속 중단)
+- cookie : 웹서버가 클라이언트에 쿠키를 저장한 경우 쿠키 정보(이름,값)을 웹 서버에 전송 예 : JSESSIONID=CDEI3830DJEJ3K3KD23K39D49)
+
+
+
+2. HTTP Response Header
+
+서버가 HTTP프로토콜을 이용해 클라이언트의 요청에 대해 HTML문서를 전송할 때 부가적 정보(content-type, content-length, server 등)를 HTTP 응답 헤더에 담아 함께 전송하게 된다. 
+
+- connection : 클라이언트와 서버의 연결 방식 설정(Keep-Alive : 클라이언트와 접속 유지,close : 클라이언트와 접속 중단)
+- Content-Type : 헤더 응답 문서의 mime 타입
+- Content-Length : 요청한 파일의 데이터의 길이
+- Last-Modified : 문서가 마지막으로 수정된 일시
+- Server :  웹서버 정보
+- Date : 현재 일시를 GMT 형식으로 지정
+- ETag : 캐시 업데이트 정보를 위한 임의의 식별 숫자
+
+**출처**
+
+http://appsnuri.tistory.com/61
 
 
 
