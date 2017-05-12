@@ -18,6 +18,41 @@
 
 ### 52. merge 과정에서 생기는 충돌을 해결하는 과정을 설명하세요. 
 
+팀원들이 자신이 작업한 branch에서  하나의 파일을 동시에 수정 하고 하나의 branch에 merge 할 경우 conflict가 발생한다. 
+
+~~~bash
+$ git merge issue3
+Auto-merging myfile.txt
+CONFLICT (content): Merge conflict in myfile.txt
+Automatic merge failed; fix conflicts and then commit the result.
+~~~
+
+함께 수정한 파일 내용은 다음과 같이 변경되어있다.
+~~~text
+원숭이도 이해할 수 있는 Git 명령어
+add: 변경 사항을 만들어서 인덱스에 등록해보기
+<<<<<<< HEAD
+commit: 인덱스의 상태를 기록하기
+=======
+pull: 원격 저장소의 내용을 가져오기
+>>>>>>> issue3
+~~~
+
+충돌이 일어난 부분이 표시되고 그 부분은 일일이 확인 해서 수정 한후 commit 한다.
+
+~~~bash
+원숭이도 이해할 수 있는 Git 명령어
+add: 변경 사항을 만들어서 인덱스에 등록해보기
+commit: 인덱스의 상태를 기록하기
+pull: 원격 저장소의 내용을 가져오기
+
+
+$ git add myfile.txt
+$ git commit -m "issue3 브랜치 병합"
+# On branch master
+nothing to commit (working directory clean)
+~~~
+
 
 ### 60. 개발시 어려움이 많거나 풀리지 않을경우 어떤 해결방법을 사용하는가? 
 
@@ -67,10 +102,10 @@ ECMA 스크립트는 기본적으로 언어의
 - 예정 키워드(Reserved Word)
 - 연산자(Operator)
 - 객체(Object)
-등을 규정짓는다. 
+  등을 규정짓는다. 
 
 이는 어떤 ECMA 스크립트 호스트 환경에서든 동일하다.
 
 **참조** 
 - https://developer.mozilla.org/ko/docs/Web/JavaScript/%EC%96%B8%EC%96%B4_%EB%A6%AC%EC%86%8C%EC%8A%A4
--  https://muckycode.blogspot.kr/2015/01/javascript.html
+- https://muckycode.blogspot.kr/2015/01/javascript.html
