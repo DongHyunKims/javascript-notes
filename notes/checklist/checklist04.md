@@ -109,3 +109,81 @@ ECMA 스크립트는 기본적으로 언어의
 **참조** 
 - https://developer.mozilla.org/ko/docs/Web/JavaScript/%EC%96%B8%EC%96%B4_%EB%A6%AC%EC%86%8C%EC%8A%A4
 - https://muckycode.blogspot.kr/2015/01/javascript.html
+
+### 39. 버블링과 캡처링을 설명하세요. 
+
+addEventListener의 세번째 인자는 boolean (true/false)으로 전달된다.
+- false는 버블링 (bubbling)
+- true는 캡쳐링 (capturing)
+
+
+버블링(false)는 자식노드부터 이벤트가 발생하여 부모로 이벤트가 전파된다.
+
+
+**그림**
+<img src="http://postfiles12.naver.net/20130123_299/romeoh_1358903687763nUoqx_PNG/bubble.png?type=w2"/>
+
+
+**예제**
+~~~javascript
+<div class="a">
+ <div class="b">
+  <div class="c"></div>
+ </div>
+</div> 
+
+document.querySelector('.a').addEventListener('click', function(){
+ console.log('a');
+}, false);
+
+document.querySelector('.b').addEventListener('click', function(){
+ console.log('b');
+}, false);
+
+document.querySelector('.c').addEventListener('click', function(){
+ console.log('c');
+}, false);
+~~~
+
+
+캡쳐링은 버블링과 반대로 부모노드에서 자식노드로 이벤트가 전파된다.
+
+**그림**
+<img src="http://postfiles2.naver.net/20130123_65/romeoh_1358903988941Q10cU_PNG/capture.png?type=w2"/>
+
+
+**예제**
+
+~~~javascript
+<div class="a">
+ <div class="b">
+  <div class="c"></div>
+ </div>
+</div> 
+ 
+document.querySelector('.a').addEventListener('click', function(){
+ console.log('a');
+}, true);
+
+document.querySelector('.b').addEventListener('click', function(){
+ console.log('b');
+}, true);
+
+document.querySelector('.c').addEventListener('click', function(){
+ console.log('c');
+}, true);
+~~~
+
+캡쳐링(true)옵션을 주면 가장 부모인 a에서 자식인 b, c로 이벤트가 순차적으로 발생하게 된다.
+
+
+
+
+**참조**
+- http://blog.naver.com/PostView.nhn?blogId=romeoh&logNo=140178486203
+
+
+
+### 29 javascript 코드를 html하단에 주로 배치하는 이유는 ? 
+
+웹브라우저가 HTML 문서를 해석(Parsing) 할 때 `<script>` 태그를 만나면 그 안에 있는 JavaScript 의 처리가 끝날 때 까지 다른 HTML의 해석을 멈추기 때문에 사용자 입장에서 HTML 페이지가 화면에 다 그려지기까지 더 오래걸리게 된다. 그래서 우선 CSS, HTML 해석이 먼저 완료되고 나서 JavaScript 가 수행하는 것이 더 빠르게 느껴지기 때문에 HTML 문서의 마지막(= `</body>` 직전)에 두는 것을 권한다.
