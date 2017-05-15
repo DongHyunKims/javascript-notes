@@ -45,7 +45,15 @@ console.innerHTML = cache.join("<br />");
 ~~~
 
 
+
+querySelect 는 굉장히 부하가 많이 걸린다 그렇기 때문에 namespace 방식을  통해서 한번만 queryselect 또는 elementByid 를 통해 element를 가져오고 사용하는 것이 좋다.
+
+
+
+
+
 **참조**
+
 - https://github.com/nhnent/fe.javascript/wiki/Reflow%EC%99%80-Repaint
 - http://webclub.tistory.com/346
 - https://lists.w3.org/Archives/Public/public-html-ig-ko/2011Sep/att-0031/Reflow_____________________________Tip.pdf
@@ -197,6 +205,7 @@ http://appsnuri.tistory.com/61
 - 전송할 데이터를 URL에 담아 보내는 방식.
 - URL의 길이 제한이 있어 많은 양의 데이터를 보내기 어렵다.
 - 보안에 가장 취약 하다. 데이터가 URL에 보이기 때문에.
+- 접근한것이 모두 캐시가 된다.
 2. POST
 - 전송한 데이터를 body에 넣어서 보내는 방식.
 - GET 방식보다 데이터를 담을수 있는 용량이 많아 대용량 데이터를 보내기에 적합하다.
