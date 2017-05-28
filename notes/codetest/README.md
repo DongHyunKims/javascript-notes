@@ -1,4 +1,6 @@
-1. Code Test
+## Code Test
+
+1.  Code Test
 - 자바스크립 코드가 잘 동작되는지 확인하는것.
 
 2. Unit Test
