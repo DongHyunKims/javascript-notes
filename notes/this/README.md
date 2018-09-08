@@ -102,6 +102,8 @@ dhkim
 false
 */
 ~~~
+
+
 위의 예제는 우선 `Person` 객체를 정의후 `person1`인스턴스를 생성한다. `person1`인스턴스를 통해 name과 age를 참조하면 참조 한 인스턴스인 `person1`을 this가 가리킨다. 그리고 해당 `Person` 객체의 prototype에 `isYoung` 메소드를 정의 하고 `person1`인스턴스를 통해 호출 하게 되면 `this.age`의 this는 `person1`을 가리켜 false 값을 제공한다. 이 예제와 같이 객체의 메소드로서 할당 될때는 해당 메소드를 호출한 객체를 this가 가리킨다. 
 
 > **주의** this 동작은 함수가 정의된 방법이나 위치에 전혀 영향을 받지 않는다.<br>
