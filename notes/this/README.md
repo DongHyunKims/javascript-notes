@@ -50,18 +50,24 @@ func() === window;
 예제2에서 `func` 함수의 호출은 `window.func()`와 같다. `func` 함수를 호출한 window를 this가 가리킨다.
 
 예제3
-~~~
+~~~javascript
 function obj(value) {
   this.value = value;
 }
 
-Obj.prototype.double = function() {
-  var _this = this;
+obj.val = 1;
+obj.double = function() {
+  const _this = this;
+  
   function helper(){
-    return _this.value + _this.value;
+    return _this.val + _this.val;
   }
-  helper();
+  
+  console.log(helper());
 }
+
+obj.double();
+
 ~~~
 예제3은 함수 호출 패턴 사용시 주의 할 점이다. 위 예제에서 `Obj` 객체의 double 메소드에서 `Obj`가 바인딩 된 this를 사용 하기 위해서는 `var _this = this;`을 꼭 작성해 주어야 한다. 그 이유는 객체 내부에 속성이 아닌 함수를 호출 할때에는 함수 호출 패턴을 사용하는데 `helper`함수의 안에서 this를 사용 했다면 무조건 전역 객체를 가리켜 원하는 동작을 하지 않았을 것이다.  
 
@@ -114,7 +120,7 @@ false
 3. 생성된 instance를 반환
 
 예제4
-~~~Javascript
+~~~javascript
 var Person = function(name) {
   this.name = name;
 }
