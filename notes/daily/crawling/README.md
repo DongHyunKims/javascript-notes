@@ -23,6 +23,7 @@ Web Scraping이라고도 하며 웹사이트의 정보를 긁어모아서 Data B
 - 웹 사이트의 HTML 문서를 가져오기 위해 사용
 
 예제
+
 ~~~ javascript
 const cheerio = require('cheerio');
 const request = require('request');
@@ -62,6 +63,7 @@ function crawling() {
 4. 원하는 정보 추출
 
 **어려웠던점**
+
 사실 프로젝트 수행시 다양한 변수가 존재해서 위 예제처럼 쉽게 데이터를 추출할 수 없었다.
 
 - 쿠키정보를 통해서 사이트 정보가 변경되는 경우
@@ -86,6 +88,7 @@ function crawling() {
 
 
 **해결방법**
+
 - 쿠키정보를 통해서 사이트 정보가 변경되는 경우 header에 해당 쿠키 정보를 추가해 콜을 보내면 해결된다.
 ~~~ javascript
 function test() {
@@ -119,6 +122,7 @@ function test() {
 **참조**
 
 requset: https://github.com/request/request
+
 cheerio: https://github.com/cheeriojs/cheerio
 
 
