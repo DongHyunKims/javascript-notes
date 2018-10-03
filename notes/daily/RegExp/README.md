@@ -84,7 +84,6 @@ if (rxPhone.test(str)) {
 
 console.log(phone);
 ~~~
-
 https://jsbin.com/pizihos/edit?js,console
 
 정규표현식에서  캡쳐링그룹 **()** 을 사용하면 RegExp 상수에 $(n)으로 접근하여 캡쳐링 그룹에 탐색된 순서대로 string 추출이 가능하다.
@@ -122,8 +121,30 @@ Id: 1 / Name: Foo
 
 https://jsbin.com/cecudav/edit?js,console
 
-다음에는 멀티라인, 한글, Positive/Nagative lookahead, Greedy vs Non-Greedy에 대해 정리 해보록 하겠다.
+3. 멀티라인 플래그 활용
+- \n, \r  이 포함된 문자열에서  원하는 문장을 추출할때 사용하는 플래그
+- ^, $은 본래 문장에 시작과 끝을 나타내는데 m플래그를 사용하면 시작은 \n, \r 뒤, 끝은 \n, \r 뒤를 의미한다.
 
-**참고**
+**문제3**
 
-정규표현식 테스트: https://regexr.com/
+~~~ javascript
+const str = `
+  2017.10.20,7423
+  #2017.10.13,5234
+  2017.09.29,1534
+  #2017.09.22,4353
+  2017.09.15,5123
+  2017.09.08,1523
+`;
+
+// output
+/*
+	{
+		7423: 2017.10.20
+		5234: 2017.10.13
+		153: 42017.09.29
+		...
+	}
+*/
+~~~
+https://jsbin.com/pekatek/edit?js,console
